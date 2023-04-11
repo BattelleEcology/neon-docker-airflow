@@ -1,5 +1,8 @@
 FROM apache/airflow:2.5.3-python3.10
 
+# Set bash strict mode
+SHELL ["/bin/bash", "-o", "pipefail", "-e", "-u", "-x", "-c"]
+
 # Several airflow components need the gcloud sdk installed, so lets do it
 # This varies from the airflow example docs in that it doesn't install the sdk as the root user
 ARG CLOUD_SDK_VERSION=425.0.0
