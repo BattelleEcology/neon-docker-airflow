@@ -3,6 +3,16 @@ FROM apache/airflow:2.5.3-python3.10
 # Set bash strict mode
 SHELL ["/bin/bash", "-o", "pipefail", "-e", "-u", "-x", "-c"]
 
+# Install apt-get packages
+USER root
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends \
+        jq \
+    && apt-get autoremove -yqq --purge \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/*
+USER airflow
+
 # Several airflow components need the gcloud sdk installed, so lets do it
 # This varies from the airflow example docs in that it doesn't install the sdk as the root user
 ARG CLOUD_SDK_VERSION=425.0.0
@@ -17,7 +27,7 @@ RUN DOWNLOAD_URL="https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/goo
        --bash-completion=false \
        --path-update=false \
        --usage-reporting=false \
-       --additional-components alpha beta kubectl gke-gcloud-auth-plugin\
+       --additional-components alpha beta kubectl gke-gcloud-auth-plugin \
        --quiet \
     && rm -rf "${TMP_DIR}" \
     && rm -rf "${GCLOUD_HOME}/.install/.backup/" \
