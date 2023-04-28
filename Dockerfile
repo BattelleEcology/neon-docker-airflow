@@ -41,7 +41,9 @@ RUN pip install --upgrade --no-cache-dir \
     apache-airflow-providers-trino \
     apache-airflow-providers-google \
     h5py \
-    ConfigArgParse
+    ConfigArgParse \
+    # Was 3.2.1
+    google-cloud-logging 
     # With Slim
     # apache-airflow-providers-celery \
     # apache-airflow-providers-cncf-kubernetes \
