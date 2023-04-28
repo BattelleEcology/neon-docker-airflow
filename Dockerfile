@@ -37,8 +37,9 @@ RUN DOWNLOAD_URL="https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/goo
 # COPY requirements.txt /
 # RUN pip install --no-cache-dir -r /requirements.txt
 # Individual packages:
-RUN pip install --no-cache-dir \
+RUN pip install --upgrade --no-cache-dir \
     apache-airflow-providers-trino \
+    apache-airflow-providers-google \
     h5py \
     ConfigArgParse
     # With Slim
