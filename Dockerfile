@@ -43,7 +43,7 @@ RUN pip install --upgrade --no-cache-dir \
     h5py \
     ConfigArgParse \
     # Was 3.2.1
-    google-cloud-logging 
+    google-cloud-logging==2.7.2
     # With Slim
     # apache-airflow-providers-celery \
     # apache-airflow-providers-cncf-kubernetes \
