@@ -1,4 +1,4 @@
-FROM apache/airflow:2.6.1-python3.10
+FROM apache/airflow:2.6.2-python3.11
 
 # Set bash strict mode
 SHELL ["/bin/bash", "-o", "pipefail", "-e", "-u", "-x", "-c"]
